@@ -109,7 +109,7 @@ def cuenta_fotos(datos)
         puts "Cámara: #{data['camera']['name']} indice: #{i}"
     end
 
-    puts hashCounts = datos['photos'][1]['camera'].values.inject(Hash.new(0)) { |m, n| m[n] += 1; m } 
+
 
 end
 
