@@ -105,27 +105,46 @@ def content(x,y)
 end
 
 def cuenta_fotos(datos)
-    faz = raz = mast = 0
+    res = {}
+    faz = raz = mast = chem = mali = mardi = navcam = pancam = mini = 0
     datos['photos'].each_with_index do |data,i|
         # puts "Cámara: #{data['camera']['name']} indice: #{i}"
         case data['camera']['name']
-        when 'FHAZ'
-            faz +=1
-        when 'RHAZ'
-            raz +=1
-        when 'MAST'
-            mast +=1
-        when 'CHEMCAM'
-        when 'MAHLI'
-        when 'MARDI'
-        when 'NAVCAM'
-        when 'PANCAM'
-        when 'MINITES'
+            when 'FHAZ'
+                faz +=1
+            when 'RHAZ'
+                raz +=1
+            when 'MAST'
+                mast +=1
+            when 'CHEMCAM'
+                chem += 1
+            when 'MAHLI'
+                mali += 1
+            when 'MARDI'
+                mardi += 1
+            when 'NAVCAM'
+                navcam += 1
+            when 'PANCAM'
+                pancam += 1
+            when 'MINITES'
+                mini += 1
         end
         
     end
 
-    puts "FHAZ: #{faz} RHAZ: #{raz} MAST: #{mast}"
+#    puts "FHAZ: #{faz} RHAZ: #{raz} MAST: #{mast}"
+    if faz!=0 then res[:FHAZ] = faz end
+    if raz!=0 then res[:RHAZ] = raz end
+    if mast!=0 then res[:MAST] = mast end
+    if chem!=0 then res[:CHEMCAM] = chem end
+    if mali!=0 then res[:MAHLI] = mali end
+    if mardi!=0 then res[:MARDI] = mardi end
+    if navcam!=0 then res[:NAVCAM] = navcam end
+    if pancam!=0 then res[:PANCAM] = pancam end
+    if mini!=0 then res[:MINITES] = mini end
+
+    return res
+
 end
 
 
